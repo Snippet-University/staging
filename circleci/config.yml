@@ -5,4 +5,4 @@
        - image: circleci/ruby:2.4.1
      steps:
        - checkout
-       - run: echo "He code you have just ran built correctly."
+       - run: echo "The code you have just ran built correctly."
