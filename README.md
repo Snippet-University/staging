@@ -10,5 +10,5 @@ entered into the storefront using general tagging and markup for testing purpose
 
 #Attributions: 
 
-#Programs Used : IDLE for Python (prop)
+#Programs Used : IDLEx for Python (prop)
 
