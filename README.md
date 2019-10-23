@@ -9,7 +9,7 @@ entered into the storefront using general tagging and markup for testing purpose
 
 #Title: Staging Block 001
 
-#Attributions: 
+#Attributions: Cloudbursting Stock
 
 #Programs Used : IDLEx for Python (prop)
 
