@@ -11,5 +11,7 @@ entered into the storefront using general tagging and markup for testing purpose
 
 #Attributions: Cloudbursting Stock
 
-#Programs Used : IDLEx for Python (prop)
+#Programs Used : IDLEx for Python (prop), Notepad++ (see below)
+
+https://sourceforge.net/projects/notepadplusplus.mirror/
 
