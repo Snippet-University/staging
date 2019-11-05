@@ -11,7 +11,11 @@ entered into the storefront using general tagging and markup for testing purpose
 
 #Attributions: Cloudbursting Stock
 
-#Programs Used : IDLEx for Python (prop), Notepad++ (see below), TreeLine (Hosted @ Sourceforge), MS Excel
+#Programs Used : IDLEx for Python (prop), Notepad++ (see below), TreeLine (Hosted @ Sourceforge), MS Excel, 
 
+CAD Design:
+https://sharecad.org/
+
+Document Designer:
 https://github.com/notepad-plus-plus/notepad-plus-plus
 
