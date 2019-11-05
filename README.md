@@ -16,6 +16,11 @@ entered into the storefront using general tagging and markup for testing purpose
 CAD Design:
 https://sharecad.org/
 
+Outline Builder:
+https://sourceforge.net/projects/treeline/files/latest/download
+
 Document Designer:
 https://github.com/notepad-plus-plus/notepad-plus-plus
 
+Spreadsheets:
+https://office.live.com/start/Excel.aspx?omkt=en%2DGB
