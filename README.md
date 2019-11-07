@@ -24,3 +24,20 @@ https://github.com/notepad-plus-plus/notepad-plus-plus
 
 Spreadsheets:
 https://office.live.com/start/Excel.aspx?omkt=en%2DGB
+
+
+Links to Snip-Uni Projects: 
+
+#https://github.com/Snippet-University/staging
+
+#https://github.com/Snippet-University/trial_bench
+
+#https://github.com/Snippet-University/assembly_calibration
+
+#https://github.com/Snippet-University/prop_diagnostics
+
+#https://github.com/Snippet-University/local_diagnostics
+
+#https://github.com/Snippet-University/engine_block
+
+#https://github.com/Snippet-University/snippet_library
