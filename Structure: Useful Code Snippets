@@ -1,0 +1,167 @@
+# -*- coding: UTF8 -*-
+# Dialog Library
+
+import wx
+import poser
+
+def Choose( title = '' , prompt = '' , OptionList = [] , response = None ):
+    dialog = wx.SingleChoiceDialog( None, title , prompt , OptionList )     # prepare the dialog
+    
+    if not OptionList == []:                                                # ensure the list is not empty
+
+        if dialog.ShowModal() == wx.ID_OK:                                  # check the dialog response
+            return dialog.GetStringSelection()                              # return the selected string
+
+        else:
+            return None
+
+        dialog.Destroy()                                                    # destroy the dialog
+
+    else:
+        return None
+
+def ChooseMulti( title = '' , prompt = '' , OptionList = [] ):
+
+    dialog = wx.MultiChoiceDialog( None, prompt, title, OptionList )    # prepare the dialog
+
+    if dialog.ShowModal() == wx.ID_OK:                                  # check the dialog response
+        selections = dialog.GetSelections()                             # get the selections indices
+        strings = [OptionList[x] for x in selections]                   # get the selections strings
+        return (selections, strings)
+
+    else:
+        return (False, False)
+    
+    dialog.Destroy()
+
+def OkCancel( title = None , alertmessage = None, okonly = False ):
+
+    if okonly:
+        style = ( wx.OK|wx.ICON_INFORMATION|wx.STAY_ON_TOP )                # test if the dialog requires only an ok button
+    else:
+        style = ( wx.OK|wx.CANCEL|wx.ICON_INFORMATION|wx.STAY_ON_TOP )      
+
+    ok_dialog = wx.MessageDialog(None, alertmessage, title, style=wx.OK|wx.CANCEL|wx.ICON_INFORMATION|wx.STAY_ON_TOP) # prepare the dialog
+    
+    if ok_dialog.ShowModal() == wx.ID_OK:                                   # test dialog response
+        return True
+
+    else:
+        return False
+
+def ShowAlert( title = None , alertmessage = None , icon = 0, Btype = 0, bType = 0 ):
+
+    icons = {   
+                0:  wx.ICON_ERROR,
+                1:  wx.ICON_EXCLAMATION,
+                2:  wx.ICON_HAND,
+                3:  wx.ICON_QUESTION,
+                4:  wx.ICON_INFORMATION,
+                5:  wx.ICON_NONE
+            }  # set up icons
+
+    buttonType =    {
+                0:  wx.OK,
+                1:  wx.CANCEL,              # Must be combined with either OK or YES_NO
+                2:  wx.YES_NO,
+                3:  wx.HELP,
+                4:  wx.NO_DEFAULT,          # Can only be used with YES_NO
+                5:  wx.CANCEL_DEFAULT,      # This style is currently not supported (and ignored) in wxOSX.
+                6:  wx.YES_DEFAULT,         # Can only be used with YES_NO
+                7:  wx.OK_DEFAULT
+                    } # set up buttons
+
+    behaviourType = {
+                0:  wx.STAY_ON_TOP,
+                1:  wx.CENTRE
+                    }  # set up behaviour
+
+    icon = icons[ icon ]                # select icon to display
+    atype = buttonType[ Btype ]         # select buttons to display
+    btype = behaviourType[ bType ]      # select behaviour
+
+    wx.MessageDialog(None, alertmessage, title, style = atype | icon | btype ).ShowModal() # Show alert message
+
+def ShowTextEntry( title = "" , message = "" , answer = None ):
+    TE_dialog = wx.TextEntryDialog(None, message, title, "", style=wx.OK) # none = parent
+    TE_dialog.SetValue("")
+
+    if TE_dialog.ShowModal() == wx.ID_OK:
+        answer = TE_dialog.GetValue()
+    else:
+        answer = False
+
+    TE_dialog.Destroy()
+
+    return answer
+
+def GetFile( StartFolder = "" , parent = None):
+    types =     "Camera         (*.cm2 , *.cmz)|*.cm2; *.cmz|"                                  
+                "Figure         (*.cr2 , *.crz)|*.cr2; *.crz|"                                  
+                "Expression     (*.fc2 , *.fcz)|*.fc2; *.fcz|"                                  
+                "Hand           (*.hd2 , *.hdz)|*.hd2; *.hdz|"                                  
+                "Hair           (*.hr2 , *.hrz)|*.hr2; *.hrz|"                                  
+                "Light          (*.lt2 , *.ltz)|*.lt2; *.ltz|"                                  
+                "Material       (*.mt5 , *.mtz , *.mc6 , *.mcz)|*.mt5; *.mtz; *.mc6; *.mcz|"    
+                "Object         (*.obj , *.obz)|*.obj; *.obz|"                                  
+                "Pose           (*.pz2 , *.p2z)|*.pz2; *.p2z|"                                  
+                "Prop           (*.pp2 , *.ppz)|*.pp2; *.ppz|"                                  
+                "Python Script  (*.py , *.pyc , *.pyd)|*.py; *.pyc; *.pyd|"                     
+                "Scene          (*.pz3 , *.pzz)|*.pz3; *.pzz|"                                  
+                "all files  (*.*)|*.*|"
+
+    openFileDialog = wx.FileDialog( parent, "Select a File", StartFolder , "", types , wx.FD_OPEN | wx.FD_FILE_MUST_EXIST )
+
+    openFileDialog.ShowModal()
+    wD = openFileDialog.GetPath()
+    openFileDialog.Destroy()
+
+    if wD:
+        return wD
+    else:
+        return False
+
+def GetFolder( FolderType = None, StartFolder = None ):
+    # get working folder
+    dialog = wx.DirDialog(None, 'Select a %s Folder ' %FolderType, StartFolder ,  style=wx.DD_DEFAULT_STYLE | wx.DD_NEW_DIR_BUTTON)
+
+    if dialog.ShowModal() == wx.ID_OK:
+        return dialog.GetPath()
+
+    else: 
+        return False
+
+def YesNo( title = "" , message = "" , answer = None ):
+    # get working folder
+    YN_dialog = wx.MessageDialog(None, message, style=wx.YES|wx.NO )
+
+    if YN_dialog.ShowModal() == wx.ID_YES:
+        return True
+
+    else: 
+        return False
+
+def get_desktop_path():
+
+    D_paths = list()
+
+    try:
+        fs = open(os.sep.join((os.path.expanduser("~"), ".config", "user-dirs.dirs")),'r')
+        data = fs.read()
+        fs.close()
+    except:
+        data = ""
+
+    D_paths = re.findall(r'XDG_DESKTOP_DIR="([^"]*)', data)
+
+    if len(D_paths) == 1:
+        D_path = D_paths[0]
+        D_path = re.sub(r'$HOME', os.path.expanduser("~"), D_path)
+    else:
+        D_path = os.sep.join((os.path.expanduser("~"), 'Desktop'))
+
+    if os.path.isdir(D_path):
+        return D_path
+    
+    else:
+        return None

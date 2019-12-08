@@ -1,0 +1,100 @@
+    {
+    version
+        {
+        number 4.01
+        }
+    readScript ":Runtime:Libraries:ESInject:Delta:InjDeltas.PBM-ES.pz2"
+    figure
+        {
+        defaultPick BODY
+        }
+    readScript ":Runtime:Libraries:ESInject:Delta:Unhide.PBM-ES.pz2"
+    actor rEye:2
+        {
+        channels
+            {
+            targetGeom PHMEyeCorneaBulge
+                {
+                keys
+                    {
+                    k  0  1
+                    }
+                }
+            targetGeom PHMEyeIrisBulge
+                {
+                keys
+                    {
+                    k  0  1
+                    }
+                }
+            translateX xtran
+                {
+                keys
+                    {
+                    k  0  -0.00104651
+                    }
+                trackingScaleMult 1
+                }
+            translateY ytran
+                {
+                keys
+                    {
+                    k  0  -0.00104651
+                    }
+                trackingScaleMult 1.000000
+                }
+            translateZ ztran
+                {
+                keys
+                    {
+                    k  0  0.000581395
+                    }
+                trackingScaleMult 1.000000
+                }
+            }
+        }
+    actor lEye:2
+        {
+        channels
+            {
+            targetGeom PHMEyeCorneaBulge
+                {
+                keys
+                    {
+                    k  0  1
+                    }
+                }
+            targetGeom PHMEyeIrisBulge
+                {
+                keys
+                    {
+                    k  0  2
+                    }
+                }
+            translateX xtran
+                {
+                keys
+                    {
+                    k  0  0.001
+                    }
+                trackingScaleMult 1
+                }
+            translateY ytran
+                {
+                keys
+                    {
+                    k  0  -0.001
+                    }
+                trackingScaleMult 1.000000
+                }
+            translateZ ztran
+                {
+                keys
+                    {
+                    k  0  0.000581395
+                    }
+                trackingScaleMult 1.000000
+                }
+            }
+        }
+    }
